@@ -1,5 +1,11 @@
+import { useIsDesktop } from "@/hooks/useIsDesktop";
+import SavedDesktop from "@/screens/tabs/desktop/SavedDesktop";
 import { Text } from "react-native";
 
 export default function Saved() {
-  return <Text>Saved Route</Text>;
+  if (useIsDesktop()) {
+    return <SavedDesktop />;
+  }
+
+  return <Text>Saved Mobile</Text>;
 }

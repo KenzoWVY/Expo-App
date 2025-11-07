@@ -1,5 +1,11 @@
+import { useIsDesktop } from "@/hooks/useIsDesktop";
+import LeaseDesktop from "@/screens/tabs/desktop/LeaseDesktop";
 import { Text } from "react-native";
 
 export default function Lease() {
-  return <Text>Lease Route</Text>;
+  if (useIsDesktop()) {
+    return <LeaseDesktop />;
+  }
+
+  return <Text>Lease Mobile</Text>;
 }

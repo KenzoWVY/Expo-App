@@ -1,10 +1,16 @@
 import { Slot, Tabs } from "expo-router";
 import { useIsDesktop } from "../../hooks/useIsDesktop";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useSafeAreaInsets } from "react-native-safe-area-context"
 
 export default function RootLayout() {
 
   const isDesktop = useIsDesktop();
+  const insets = useSafeAreaInsets();
+
+  if (isDesktop) {
+    return <Slot />;
+  }
 
   return (
     <Tabs
@@ -12,6 +18,9 @@ export default function RootLayout() {
       headerShown: false,
       tabBarActiveTintColor: "#007AFF",
       tabBarInactiveTintColor: "#8E8E93",
+      tabBarStyle: {
+        paddingBottom: insets.bottom
+      }
     }}
     >
 
